@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Time Shift Racer - Ultimate Edition</title>
+    
+    <!-- Google Fonts for Sci-Fi Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Babylon.js Core & Loaders -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <!-- 3D Canvas -->
+    <canvas id="renderCanvas"></canvas>
+
+    <div id="uiContainer">
+        
+        <!-- 1. SPLASH SCREEN -->
+        <div id="splashScreen" class="screen active splash-bg">
+            <h1 class="splash-title zoom-in">TIME SHIFT<br><span>NEXUS</span></h1>
+        </div>
+
+        <!-- 2. LOADING SCREEN -->
+        <div id="loadingScreen" class="screen hidden loading-bg">
+            <div class="loader-ring"></div>
+            <h2 id="loadingText" class="neon-text">LOADING 0%</h2>
+            <div class="progress-bar-bg"><div id="progressBar"></div></div>
+        </div>
+
+        <!-- 3. MAIN MENU SCREEN (Garage & Shop) -->
+        <div id="mainMenuScreen" class="screen hidden menu-bg">
+            <div class="top-bar glass">
+                <div class="profile-info"><i class="fas fa-user-astronaut"></i> <span id="playerName">Racer_01</span></div>
+                <div class="currencies">
+                    <div class="pill nitro"><i class="fas fa-fire"></i> <span id="menuNitro">3</span></div>
+                    <div class="pill gold"><i class="fas fa-coins"></i> <span id="menuCoins">0</span></div>
+                </div>
+            </div>
+
+            <div class="menu-center">
+                <!-- Garage Selector -->
+                <div class="garage-panel glass">
+                    <div class="selector">
+                        <button id="carPrevBtn" class="arrow-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div class="info">
+                            <span class="label">VEHICLE</span>
+                            <span id="carNameText" class="value">MERCEDES SLR</span>
+                            <!-- Lock/Unlock UI -->
+                            <div id="carLockStatus" class="lock-status hidden">
+                                <i class="fas fa-lock"></i> <span id="carCostText">500</span>
+                                <button id="buyCarBtn" class="buy-btn">UNLOCK</button>
+                            </div>
+                        </div>
+                        <button id="carNextBtn" class="arrow-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="selector">
+                        <button id="roadPrevBtn" class="arrow-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div class="info">
+                            <span class="label">ENVIRONMENT</span>
+                            <span id="roadNameText" class="value">NEON HIGHWAY</span>
+                        </div>
+                        <button id="roadNextBtn" class="arrow-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="main-actions">
+                    <button id="startBtn" class="huge-play-btn pulse">RACE NOW</button>
+                    <div class="sub-actions">
+                        <button id="leaderboardBtn" class="icon-btn"><i class="fas fa-trophy"></i></button>
+                        <button id="themeToggleBtn" class="icon-btn"><i class="fas fa-cloud-moon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. HUD SCREEN (In-Game Controls) -->
+        <div id="hudScreen" class="screen hidden hud-layer">
+            <div class="hud-top">
+                <div class="hud-score">SCORE: <span id="scoreDisplay">0</span></div>
+                <div class="hud-coins"><i class="fas fa-coins"></i> <span id="coinDisplay">0</span></div>
+            </div>
+            
+            <!-- Controls (Left, Right, Brake, Nitro) -->
+            <div class="hud-controls">
+                <div class="left-side">
+                    <button id="leftBtn" class="control-btn"><i class="fas fa-angle-double-left"></i></button>
+                    <button id="brakeBtn" class="control-btn brake"><i class="fas fa-minus-circle"></i></button>
+                </div>
+                <div class="right-side">
+                    <button id="nitroBtn" class="control-btn nitro-btn"><i class="fas fa-rocket"></i> <span id="hudNitroCount">3</span></button>
+                    <button id="rightBtn" class="control-btn"><i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+            <button id="playPauseBtn" class="pause-btn"><i class="fas fa-pause"></i></button>
+        </div>
+
+        <!-- 5. GAME OVER & LEADERBOARD SCREEN -->
+        <div id="gameOverScreen" class="screen hidden glass-overlay">
+            <div class="game-over-box glass">
+                <h1 class="neon-red">SYSTEM FAILURE</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat"><span class="label">DISTANCE</span><span id="finalScore">0</span></div>
+                    <div class="stat"><span class="label">COINS</span><span id="finalCoins">0</span></div>
+                </div>
+
+                <div class="local-leaderboard">
+                    <h3><i class="fas fa-crown"></i> LOCAL TOP 3</h3>
+                    <ul id="leaderboardList">
+                        <li>1. 0</li>
+                        <li>2. 0</li>
+                        <li>3. 0</li>
+                    </ul>
+                </div>
+
+                <div class="go-actions">
+                    <button id="restartBtn" class="cyber-btn"><i class="fas fa-redo"></i> REBOOT</button>
+                    <button id="homeBtn" class="cyber-btn outline"><i class="fas fa-home"></i> GARAGE</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MAIN GAME SCRIPT -->
+    <script src="game.js"></script>
+</body>
+</html>
