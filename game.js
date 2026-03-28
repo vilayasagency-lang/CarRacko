@@ -277,9 +277,9 @@ window.addEventListener("DOMContentLoaded", function () {
         // ======================================================================
         // 🎵 PERFECT BABYLON SOUND SYSTEM (Guaranteed Mobile Support)
         // ======================================================================
-        sfxCount = new BABYLON.Sound("countSfx", "assets/sound/count.mp3", s, null, { spatialSound: false, autoplay: false, volume: 1.0 });
-        sfxCar = new BABYLON.Sound("carSfx", "assets/sound/car.mp3", s, null, { loop: true, autoplay: false, spatialSound: false, volume: 0.7 });
-        sfxCoin = new BABYLON.Sound("coinSfx", "assets/sound/coin.mp3", s, null, { spatialSound: false, autoplay: false, volume: 1.0 });
+        sfxCount = new BABYLON.Sound("countSfx", "./assets/sound/count.mp3", s, null, { spatialSound: false, autoplay: false, volume: 1.0 });
+        sfxCar = new BABYLON.Sound("carSfx", "./assets/sound/car.mp3", s, null, { loop: true, autoplay: false, spatialSound: false, volume: 0.7 });
+        sfxCoin = new BABYLON.Sound("coinSfx", "./assets/sound/coin.mp3", s, null, { spatialSound: false, autoplay: false, volume: 1.0 });
         sfxCrash = new BABYLON.Sound("crashSfx", "https://playground.babylonjs.com/sounds/explosion.wav", s, null, { spatialSound: false, autoplay: false, volume: 1.0 });
 
         setupMaterials(s);
