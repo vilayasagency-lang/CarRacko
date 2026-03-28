@@ -37,8 +37,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // ======================================================================
     let carConfig =[
         { file: "car.glb", name: "MERCEDES SLR", price: 0, scale: "AUTO", yOffset: 2, rotY: 0 },
-        { file: "carone.glb", name: "STREET RACER", price: 0, scale: "AUTO", yOffset: 2, rotY: 0 },
-        { file: "new_car.glb", name: "NIGHTMARE GT", price: 500, scale: "AUTO", yOffset: 2, rotY: 0 }
+        { file: "carone.glb", name: "STREET RACER", price: 0, scale: "10", yOffset: 2, rotY: 0 }
     ];
 
     let roadConfig =[
