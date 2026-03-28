@@ -36,8 +36,8 @@ window.addEventListener("DOMContentLoaded", function () {
     // 🚘 UNLIMITED GARAGE & ROAD CONFIGURATION
     // ======================================================================
     let carConfig =[
-        { file: "car.glb", name: "MERCEDES SLR", price: 0, scale: "AUTO", yOffset: 2, rotY: 0 },
-        { file: "carone.glb", name: "STREET RACER", price: 0, scale: "10", yOffset: 2, rotY: 0 }
+        { file: "car.glb", name: "MERCEDES SLR", price: 0, scale: "15", yOffset: 2, rotY: 0 },
+        { file: "carone.glb", name: "STREET RACER", price: 0, scale: "50", yOffset: 2, rotY: 0 }
     ];
 
     let roadConfig =[
