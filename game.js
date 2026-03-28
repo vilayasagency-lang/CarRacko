@@ -202,7 +202,7 @@ window.addEventListener("DOMContentLoaded", function () {
     let carHitbox, targetX = 0, currentLane = 1; 
     let isBraking = false, isNitroActive = false, nitroTimer = 0;
     
-    const laneX =[-2.5, 0, 2.5]; 
+    const laneX =[-2.0, 0, 2.0]; 
     let obstacles =[], coins =[];
 
     let assetsLoadedCount = 0;
