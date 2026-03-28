@@ -453,7 +453,7 @@ window.addEventListener("DOMContentLoaded", function () {
             spatialSound: false,
             autoplay: false,
             loop: false,
-            volume: 1.0,
+            volume: 5.0,
         });
 
         // car.mp3    → looping engine sound (starts after GO!, stops on crash)
@@ -461,7 +461,7 @@ window.addEventListener("DOMContentLoaded", function () {
             loop: true,
             autoplay: false,
             spatialSound: false,
-            volume: 0.8,
+            volume: 5.8,
         });
 
         // coin.mp3   → one-shot on coin collect
@@ -469,7 +469,7 @@ window.addEventListener("DOMContentLoaded", function () {
             spatialSound: false,
             autoplay: false,
             loop: false,
-            volume: 1.0,
+            volume: 5.0,
         });
 
         // crash sound → one-shot on obstacle hit
